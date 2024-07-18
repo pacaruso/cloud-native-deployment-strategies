@@ -11,7 +11,7 @@ spec:
   source:
     path: helm/quarkus-helm-umbrella/chart
     repoURL:  https://github.com/pacaruso/cloud-native-deployment-strategies.git
-    targetRevision: rollouts-blue-green
+    targetRevision: rollouts
     helm:
       parameters:
       - name: "global.namespace"
