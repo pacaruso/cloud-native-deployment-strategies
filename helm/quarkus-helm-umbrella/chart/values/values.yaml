@@ -4,7 +4,7 @@ discountsNetworkingOffline:
   version: green
 
 productsNetworkingOnline:
-  version: green
+  version: blue
   router:
     enabled: true
 productsNetworkingOffline:
