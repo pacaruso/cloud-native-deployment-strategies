@@ -16,7 +16,7 @@ products-green:
   quarkus-base:
     replicaCount: 1
     image:
-      tag: v1.0.1
+      tag: v1.1.1
   mode: offline
 products-blue:
   quarkus-base:
