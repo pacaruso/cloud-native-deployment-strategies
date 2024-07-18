@@ -8,7 +8,7 @@ productsNetworkingOnline:
   router:
     enabled: true
 productsNetworkingOffline:
-  version: green
+  version: blue
   router:
     enabled: true
 
@@ -20,10 +20,10 @@ products-green:
   mode: online
 products-blue:
   quarkus-base:
-    replicaCount: 2
+    replicaCount: 1
     image:
-      tag: v1.0.1
-  mode: online
+      tag: v1.1.1
+  mode: offline
 
 discounts-green:
   quarkus-base:
