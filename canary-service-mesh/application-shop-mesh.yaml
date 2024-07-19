@@ -19,7 +19,7 @@ spec:
       - name: "global.namespace"
         value: gitops
       - name: "domain"
-        value: "apps.cluster-njqr4.dynamic.redhatworkshops.io"
+        value: "cluster-njqr4.dynamic.redhatworkshops.io"
   project: default
   syncPolicy:
     automated:
