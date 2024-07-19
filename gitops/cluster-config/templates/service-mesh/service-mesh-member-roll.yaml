@@ -10,4 +10,5 @@ metadata:
 spec:
   members:
     - {{ .Values.namespace }}
+    - service-mesh-demo
 {{ end }}
