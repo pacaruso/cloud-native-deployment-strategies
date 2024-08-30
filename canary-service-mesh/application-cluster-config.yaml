@@ -20,6 +20,8 @@ spec:
         value: "false"
       - name: "github.enabled"
         value: "false"
+      - name: "jaeger.enabled"
+        value: "false"
   project: default
   syncPolicy:
     automated:
