@@ -25,7 +25,7 @@ global:
 
 products-green:
   quarkus-base:
-    replicaCount: 4
+    replicaCount: 3
     image:
       tag: v1.1.1
   mode: online
