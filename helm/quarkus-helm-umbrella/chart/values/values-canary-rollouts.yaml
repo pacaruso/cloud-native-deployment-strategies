@@ -44,8 +44,7 @@ products-blue:
       canary:
         steps:
           - setWeight: 10
-          - pause:
-              duration: 30s
+          - pause: {}
           - setWeight: 50
           - pause:
               duration: 30s
