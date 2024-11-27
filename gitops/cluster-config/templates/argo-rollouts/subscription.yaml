@@ -1,0 +1,12 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: argo-operator
+spec:
+  config:
+   env:
+    - name: NAMESPACE_SCOPED_ARGO_ROLLOUTS
+      value: 'false' 
+    - name: CLUSTER_SCOPED_ARGO_ROLLOUTS_NAMESPACES
+      value: gitops 
+ ...
