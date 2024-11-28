@@ -26,7 +26,7 @@ spec:
         prometheus.io/scrape: "true"
       labels:
         app.kubernetes.io/name: discounts
-        app.kubernetes.io/instance: shop
+        app.kubernetes.io/instance: discounts
         app: discounts
         version: none
     spec:
