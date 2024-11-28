@@ -1,0 +1,81 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: discounts
+  labels:
+    helm.sh/chart: quarkus-base-0.1.0
+    app.kubernetes.io/name: discounts-umbrella
+    app.kubernetes.io/instance: shop
+    app: discounts
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 2
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: discounts-umbrella
+      app.kubernetes.io/instance: shop
+      app: discounts
+      version: none
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /q/metrics
+        prometheus.io/port: "8080"
+        prometheus.io/scrape: "true"
+      labels:
+        app.kubernetes.io/name: discounts-umbrella
+        app.kubernetes.io/instance: shop
+        app: discounts
+        version: none
+    spec:
+      serviceAccountName: default
+      securityContext:
+        {}
+      containers:
+        - name: quarkus-base
+          securityContext:
+            {}
+          image: "quay.io/dseveria/discounts:v1.0.1"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          envFrom:
+          - configMapRef:
+              name: "discounts-configmap-env"
+          - configMapRef:
+              name: "discounts-configmap-env-base"
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /q/health/live
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 0
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 10
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /q/health/ready
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 0
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 10
+          resources:
+            {}
+  strategy:
+    canary:
+      analysis:
+        templates:
+        - templateName: discounts-analysis-template
+      steps:
+      - setWeight: 50
+      - pause:
+          duration: 1m
