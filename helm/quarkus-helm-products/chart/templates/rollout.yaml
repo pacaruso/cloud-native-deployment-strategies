@@ -1,0 +1,83 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: products
+  labels:
+    helm.sh/chart: quarkus-base-0.1.0
+    app.kubernetes.io/name: products-umbrella
+    app.kubernetes.io/instance:  {{ .Release.Name }}
+    app: products
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: products-umbrella
+      app.kubernetes.io/instance:  {{ .Release.Name }}
+      app: products
+      version: none
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /q/metrics
+        prometheus.io/port: "8080"
+        prometheus.io/scrape: "true"
+      labels:
+        app.kubernetes.io/name: products-umbrella
+        app.kubernetes.io/instance:  {{ .Release.Name }}
+        app: products
+        version: none
+    spec:
+      serviceAccountName: default
+      securityContext:
+        {}
+      containers:
+        - name: quarkus-base
+          securityContext:
+            {}
+          image: "quay.io/dseveria/products:v1.1.1"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          envFrom:
+          - configMapRef:
+              name: "products-configmap-env"
+          - configMapRef:
+              name: "products-configmap-env-base"
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /q/health/live
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 0
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 10
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /q/health/ready
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 0
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 10
+          resources:
+            {}
+  strategy:
+    canary:
+      analysis:
+        templates:
+        - templateName: products-analysis-template
+      steps:
+      - setWeight: 10
+      - pause: {}
+      - setWeight: 50
+      - pause:
+          duration: 30s

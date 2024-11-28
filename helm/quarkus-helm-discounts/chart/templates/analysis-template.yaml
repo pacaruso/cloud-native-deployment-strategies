@@ -1,0 +1,20 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: discounts-analysis-template
+  labels:
+    helm.sh/chart: quarkus-base-0.1.0
+    app.kubernetes.io/name: discounts-umbrella
+    app.kubernetes.io/instance:  {{ .Release.Name }}
+    app: discounts
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  metrics:
+  - name: discounts-webmetric
+    successCondition: result == 'UP'
+    provider:
+      web:
+        url: "http://discounts-umbrella-online.test.svc.cluster.local:8080/q/health/ready"
+        jsonPath: "{$.status}"

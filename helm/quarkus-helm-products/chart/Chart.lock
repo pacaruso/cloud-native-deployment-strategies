@@ -1,0 +1,6 @@
+dependencies:
+- name: quarkus-base
+  repository: file://../../quarkus-helm-base/chart
+  version: 0.1.0
+digest: sha256:d6a6f3c5eacb3847606c14786398e3de4398f6d6c5a451e05cd31c2ecdc196c0
+generated: "2024-11-28T14:30:41.442298+01:00"

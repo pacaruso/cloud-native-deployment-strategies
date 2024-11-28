@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    helm.sh/chart: productsNetworkingOnline-0.1.0
+    app.kubernetes.io/name: products-umbrella
+    app.kubernetes.io/instance:  {{ .Release.Name }}
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: Helm
+  name: "products-umbrella-online-prometheus-monitor"
+spec:
+  endpoints:
+  - interval: 30s
+    targetPort: 8080
+    path: /q/metrics
+    scheme: http
+  selector:
+    matchLabels:
+      helm.sh/chart: productsNetworkingOnline-0.1.0
+      app.kubernetes.io/name: products-umbrella
+      app.kubernetes.io/instance:  {{ .Release.Name }}
+      app.kubernetes.io/version: "1.0.0"
+      app.kubernetes.io/managed-by: Helm
