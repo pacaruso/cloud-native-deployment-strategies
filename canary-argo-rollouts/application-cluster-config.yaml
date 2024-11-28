@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cluster-configuration
+  name: cluster-configuration-demo
   namespace: openshift-gitops
 spec:
   destination:
@@ -10,7 +10,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: gitops/cluster-config
-    repoURL: 'https://github.com/davidseve/cloud-native-deployment-strategies.git'
+    repoURL: 'https://github.com/pacaruso/cloud-native-deployment-strategies.git'
     targetRevision: HEAD
     helm:
      parameters:
@@ -19,7 +19,7 @@ spec:
       - name: "github.enabled"
         value: "false"
       - name: "argoRollouts.enabled"
-        value: "true"
+        value: "false"
   project: default
   syncPolicy:
     automated:
