@@ -1,4 +1,4 @@
-namespace: gitops
+namespace: gitops-test
 istio:
   enabled: false
 pipeline:
