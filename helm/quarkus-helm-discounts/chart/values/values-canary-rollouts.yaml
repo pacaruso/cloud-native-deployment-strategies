@@ -20,7 +20,7 @@ discounts-blue:
       enabled: true
       analysis:
         web: true
-        service: "discounts-umbrella-online"
+        service: "discounts-online"
       canary:
         steps:
           - setWeight: 50
@@ -40,7 +40,7 @@ products-blue:
       enabled: true
       analysis:
         web: true
-        service: "products-umbrella-online"
+        service: "products-online"
       canary:
         steps:
           - setWeight: 10

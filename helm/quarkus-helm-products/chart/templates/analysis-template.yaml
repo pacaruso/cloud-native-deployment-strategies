@@ -4,7 +4,7 @@ metadata:
   name: products-analysis-template
   labels:
     helm.sh/chart: quarkus-base-0.1.0
-    app.kubernetes.io/name: products-umbrella
+    app.kubernetes.io/name: products
     app.kubernetes.io/instance:  {{ .Release.Name }}
     app: products
     app.kubernetes.io/version: "1.0.0"
@@ -15,5 +15,5 @@ spec:
     successCondition: result == 'UP'
     provider:
       web:
-        url: "http://products-umbrella-online.test.svc.cluster.local:8080/q/health/ready"
+        url: "http://products-online.test.svc.cluster.local:8080/q/health/ready"
         jsonPath: "{$.status}"

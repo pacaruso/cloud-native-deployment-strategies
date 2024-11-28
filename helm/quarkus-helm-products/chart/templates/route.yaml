@@ -3,17 +3,17 @@ kind: Route
 metadata:
   labels:
     helm.sh/chart: productsNetworkingOnline-0.1.0
-    app.kubernetes.io/name: products-umbrella
+    app.kubernetes.io/name: products
     app.kubernetes.io/instance:  {{ .Release.Name }}
     app.kubernetes.io/version: "1.0.0"
     app.kubernetes.io/managed-by: Helm
-  name: products-umbrella-online
+  name: products-online
 spec:
   port:
     targetPort: 8080
   to:
     kind: Service
-    name: products-umbrella-online
+    name: products-online
   tls:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect

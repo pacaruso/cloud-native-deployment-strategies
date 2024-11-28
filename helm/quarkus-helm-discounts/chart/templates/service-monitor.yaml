@@ -3,11 +3,11 @@ kind: ServiceMonitor
 metadata:
   labels:
     helm.sh/chart: discountsNetworkingOnline-0.1.0
-    app.kubernetes.io/name: discounts-umbrella
+    app.kubernetes.io/name: discounts
     app.kubernetes.io/instance:  {{ .Release.Name }}
     app.kubernetes.io/version: "1.0.0"
     app.kubernetes.io/managed-by: Helm
-  name: "discounts-umbrella-online-prometheus-monitor"
+  name: "discounts-online-prometheus-monitor"
 spec:
   endpoints:
   - interval: 30s
@@ -17,7 +17,7 @@ spec:
   selector:
     matchLabels:
       helm.sh/chart: discountsNetworkingOnline-0.1.0
-      app.kubernetes.io/name: discounts-umbrella
+      app.kubernetes.io/name: discounts
       app.kubernetes.io/instance:  {{ .Release.Name }}
       app.kubernetes.io/version: "1.0.0"
       app.kubernetes.io/managed-by: Helm

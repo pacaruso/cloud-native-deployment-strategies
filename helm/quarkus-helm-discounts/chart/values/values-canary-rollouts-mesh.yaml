@@ -33,10 +33,10 @@ discounts-blue:
       analysis:
         prometheus: true
         query: sum(irate(
-            istio_requests_total{reporter="source",destination_service_name=~"discounts-umbrella-online",response_code!~"5.*"}[30s]
+            istio_requests_total{reporter="source",destination_service_name=~"discounts-online",response_code!~"5.*"}[30s]
           )) /
           sum(irate(
-            istio_requests_total{reporter="source",destination_service_name=~"discounts-umbrella-online"}[30s]
+            istio_requests_total{reporter="source",destination_service_name=~"discounts-online"}[30s]
           ))
       canary:
         trafficRouting:
@@ -44,9 +44,9 @@ discounts-blue:
             virtualService:
               routes:
               - primary
-              name: shop-umbrella-vs-discounts
+              name: shop-vs-discounts
             destinationRule:
-              name: shop-umbrella-discounts-rule
+              name: shop-discounts-rule
               canarySubsetName: canary
               stableSubsetName: stable
 
@@ -65,10 +65,10 @@ products-blue:
       analysis:
         prometheus: true
         query: sum(irate(
-            istio_requests_total{reporter="source",destination_service_name=~"products-umbrella-online",response_code!~"5.*"}[30s]
+            istio_requests_total{reporter="source",destination_service_name=~"products-online",response_code!~"5.*"}[30s]
           )) /
           sum(irate(
-            istio_requests_total{reporter="source",destination_service_name=~"products-umbrella-online"}[30s]
+            istio_requests_total{reporter="source",destination_service_name=~"products-online"}[30s]
           ))
       canary:
         trafficRouting:
@@ -76,9 +76,9 @@ products-blue:
             virtualService:
               routes:
               - primary
-              name: shop-umbrella-vs-products
+              name: shop-vs-products
             destinationRule:
-              name: shop-umbrella-products-rule
+              name: shop-products-rule
               canarySubsetName: canary
               stableSubsetName: stable
         steps:
@@ -90,7 +90,7 @@ products-blue:
               duration: 30s
   fullnameOverride: "products"
 
-fullnameOverride: "shop-umbrella" 
+fullnameOverride: "shop" 
 
 
 

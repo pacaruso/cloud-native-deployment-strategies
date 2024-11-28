@@ -1,12 +1,12 @@
 ---
-# Source: shop-umbrella-blue-green/charts/discounts-blue/charts/quarkus-base/templates/configmap-env-base.yaml
+# Source: shop-blue-green/charts/discounts-blue/charts/quarkus-base/templates/configmap-env-base.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: "discounts-configmap-env-base"
   labels:
     helm.sh/chart: quarkus-base-0.1.0
-    app.kubernetes.io/name: discounts-umbrella
+    app.kubernetes.io/name: discounts
     app.kubernetes.io/instance:  {{ .Release.Name }}
     app: discounts
     app.kubernetes.io/version: "1.0.0"
@@ -28,16 +28,16 @@ data:
   quarkus.jaeger.propagation: "b3"
   quarkus.jaeger.reporter-log-spans: "true"
 ---
-# Source: shop-umbrella-blue-green/charts/discounts-blue/templates/configmap-env.yaml
+# Source: shop-blue-green/charts/discounts-blue/templates/configmap-env.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: "discounts-configmap-env"
   labels:
     helm.sh/chart: discounts-blue-0.1.0
-    app.kubernetes.io/name: discounts-umbrella
+    app.kubernetes.io/name: discounts
     app.kubernetes.io/instance:  {{ .Release.Name }}
-    app: discounts-umbrella
+    app: discounts
     app.kubernetes.io/version: "1.0.0"
     app.kubernetes.io/managed-by: Helm
 data:

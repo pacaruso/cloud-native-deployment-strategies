@@ -18,11 +18,11 @@ discounts-blue:
       enabled: true
       analysis:
         web: true
-        service: "discounts-umbrella-offline"
+        service: "discounts-offline"
       blueGreen:
         enabled: true
-        activeService: "discounts-umbrella-online"
-        previewService: "discounts-umbrella-offline"
+        activeService: "discounts-online"
+        previewService: "discounts-offline"
   fullnameOverride: "discounts"
   
 products-blue:
@@ -37,11 +37,11 @@ products-blue:
       enabled: true
       analysis:
         web: true
-        service: "products-umbrella-online"
+        service: "products-online"
       blueGreen:
         enabled: true
-        activeService: "products-umbrella-online"
-        previewService: "products-umbrella-offline"
+        activeService: "products-online"
+        previewService: "products-offline"
   fullnameOverride: "products"
 
 

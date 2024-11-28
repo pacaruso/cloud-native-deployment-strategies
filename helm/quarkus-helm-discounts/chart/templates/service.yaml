@@ -1,11 +1,11 @@
-# Source: shop-umbrella-blue-green/charts/discountsNetworkingOnline/templates/service.yaml
+# Source: shop-blue-green/charts/discountsNetworkingOnline/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: discounts-umbrella-online
+  name: discounts-online
   labels:
     helm.sh/chart: discountsNetworkingOnline-0.1.0
-    app.kubernetes.io/name: discounts-umbrella
+    app.kubernetes.io/name: discounts
     app.kubernetes.io/instance:  {{ .Release.Name }}
     app.kubernetes.io/version: "1.0.0"
     app.kubernetes.io/managed-by: Helm
@@ -16,5 +16,5 @@ spec:
       targetPort: 8080
       name: http
   selector:
-    app.kubernetes.io/name: discounts-umbrella
+    app.kubernetes.io/name: discounts
     app.kubernetes.io/instance:  {{ .Release.Name }}

@@ -4,7 +4,7 @@ metadata:
   name: products
   labels:
     helm.sh/chart: quarkus-base-0.1.0
-    app.kubernetes.io/name: products-umbrella
+    app.kubernetes.io/name: products
     app.kubernetes.io/instance:  {{ .Release.Name }}
     app: products
     app.kubernetes.io/version: "1.0.0"
@@ -14,7 +14,7 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app.kubernetes.io/name: products-umbrella
+      app.kubernetes.io/name: products
       app.kubernetes.io/instance:  {{ .Release.Name }}
       app: products
       version: none
@@ -25,7 +25,7 @@ spec:
         prometheus.io/port: "8080"
         prometheus.io/scrape: "true"
       labels:
-        app.kubernetes.io/name: products-umbrella
+        app.kubernetes.io/name: products
         app.kubernetes.io/instance:  {{ .Release.Name }}
         app: products
         version: none
