@@ -15,5 +15,5 @@ spec:
     successCondition: result == 'UP'
     provider:
       web:
-        url: "http://products-online.test.svc.cluster.local:8080/q/health/ready"
+        url: "http://products-online.gitops-test.svc.cluster.local:8080/q/health/ready"
         jsonPath: "{$.status}"
