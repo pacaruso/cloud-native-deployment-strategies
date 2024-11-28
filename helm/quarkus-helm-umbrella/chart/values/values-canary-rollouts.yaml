@@ -34,7 +34,7 @@ products-blue:
     image:
       tag: v1.0.1
     version: none
-    replicaCount: 1
+    replicaCount: 4
     fullnameOverride: "products"
     rollouts:
       enabled: true
