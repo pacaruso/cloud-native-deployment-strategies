@@ -30,7 +30,7 @@ products-blue:
   quarkus-base:
     image:
       tag: v1.0.1
-    replicaCount: 2
+    replicaCount: 4
     fullnameOverride: "products"
     version: none
     rollouts:
