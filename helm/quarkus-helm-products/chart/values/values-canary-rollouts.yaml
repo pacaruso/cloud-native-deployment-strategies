@@ -11,19 +11,18 @@ global:
   mode: online
   image:
     tag: v1.0.1
-    version: none
-    replicaCount: 1
-    fullnameOverride: "products"
-    rollouts:
-      enabled: true
-      analysis:
-        web: true
-        service: "products-online"
-      canary:
-        steps:
-          - setWeight: 10
-          - pause: {}
-          - setWeight: 50
-          - pause:
-              duration: 30s
+  version: none
+  replicaCount: 1
   fullnameOverride: "products"
+  rollouts:
+    enabled: true
+    analysis:
+      web: true
+      service: "products-online"
+    canary:
+      steps:
+        - setWeight: 10
+        - pause: {}
+        - setWeight: 50
+        - pause:
+            duration: 30s
