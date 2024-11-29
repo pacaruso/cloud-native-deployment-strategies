@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/version: "1.0.0"
     app.kubernetes.io/managed-by: Helm
 data:
-  application.version: {{ .products-blue.quarkus-base.image.tag }}
+  application.version: {{.Values.global.image.tag }}
   application.colour: none
   
   quarkus.log.level: DEBUG

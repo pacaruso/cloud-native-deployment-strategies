@@ -8,31 +8,9 @@ global:
   namespace: test
   #needed for rollouts analysis
   prometheusAddress: https://prometheus-user-workload.openshift-user-workload-monitoring.svc.cluster.local:9091
-
-discounts-blue:
   mode: online
-  quarkus-base:
-    fullnameOverride: "discounts"
-    image:
-      tag: v1.0.1
-    version: none
-    rollouts:
-      enabled: true
-      analysis:
-        web: true
-        service: "discounts-umbrella-online"
-      canary:
-        steps:
-          - setWeight: 50
-          - pause:
-              duration: 1m
-  fullnameOverride: "discounts"
-    
-products-blue:
-  mode: online
-  quarkus-base:
-    image:
-      tag: v1.1.1
+  image:
+    tag: v1.1.1
     version: none
     replicaCount: 1
     fullnameOverride: "products"
@@ -40,7 +18,7 @@ products-blue:
       enabled: true
       analysis:
         web: true
-        service: "products-umbrella-online"
+        service: "products-online"
       canary:
         steps:
           - setWeight: 10
@@ -49,11 +27,3 @@ products-blue:
           - pause:
               duration: 30s
   fullnameOverride: "products"
-
-
-
-
-
-
-
-
