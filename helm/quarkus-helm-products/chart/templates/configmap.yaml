@@ -1,11 +1,10 @@
-# Source: shop-umbrella-blue-green/charts/products-blue/charts/quarkus-base/templates/configmap-env-base.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: "products-configmap-env-base"
   labels:
     helm.sh/chart: quarkus-base-0.1.0
-    app.kubernetes.io/name: products-umbrella
+    app.kubernetes.io/name: products
     app.kubernetes.io/instance:  {{ .Release.Name }}
     app: products
     app.kubernetes.io/version: "1.0.0"
@@ -27,22 +26,21 @@ data:
   quarkus.jaeger.propagation: "b3"
   quarkus.jaeger.reporter-log-spans: "true"
 ---
-# Source: shop-umbrella-blue-green/charts/products-blue/templates/configmap-env.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: "products-configmap-env"
   labels:
     helm.sh/chart: products-blue-0.1.0
-    app.kubernetes.io/name: products-umbrella
+    app.kubernetes.io/name: products
     app.kubernetes.io/instance:  {{ .Release.Name }}
-    app: products-umbrella
+    app: products
     app.kubernetes.io/version: "1.0.0"
     app.kubernetes.io/managed-by: Helm
 data:
   application.mode: online 
 
-  quarkus.rest-client.discounts-api.url: http://discounts-umbrella-online:8080
+  quarkus.rest-client.discounts-api.url: http://discounts-online:8080
   quarkus.rest-client.discounts-api.scope: javax.inject.RequestScoped
   #quarkus.rest-client.discounts-api.connection-pool-size: "50"
   quarkus.rest-client.discounts-api.connection-ttl: "1"
