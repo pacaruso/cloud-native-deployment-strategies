@@ -37,7 +37,7 @@ spec:
         - name: quarkus-base
           securityContext:
             {}
-          image: "quay.io/dseveria/products:v1.0.1"
+          image: "quay.io/dseveria/products:{{ .products-blue.quarkus-base.image.tag }}"
           imagePullPolicy: Always
           ports:
             - name: http
