@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/version: "1.0.0"
     app.kubernetes.io/managed-by: Helm
 spec:
-  replicas: {{ .Values.global.replicaCount}}
+  replicas:  {{ .Values.global.replicaCount }}
   revisionHistoryLimit: 2
   selector:
     matchLabels:

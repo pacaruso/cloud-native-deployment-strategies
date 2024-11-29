@@ -26,4 +26,3 @@ global:
         - setWeight: 50
         - pause:
             duration: 30s
-<
